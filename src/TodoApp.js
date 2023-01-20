@@ -45,8 +45,9 @@ function TodoApp({ initialTodos }) {
         <div className="row">
 
           <div className="col-md-6">
-            <EditableTodoList todos={ todos } removeTodo={ removeTodo } />
-            <span className="text-muted">You have no todos.</span>
+            <h3 className="mb-3">Todos</h3>
+              <EditableTodoList todos={ todos } removeTodo={ removeTodo } />
+              <span className="text-muted">You have no todos.</span>
           </div>
 
         {/* (if no top todo, omit this whole section) */}
