@@ -17,8 +17,9 @@ function TopTodo({todos}) {
 
   let top = todos.reduce(
     (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
+    console.log("top:",top)
 
-    return <Todo todo={top} />;
+    return <Todo todo={top} />; // {top: {todo: }} // {key: value}
 
   // if (todos.length > 0) {
   //   let top = todos.reduce(

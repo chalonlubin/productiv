@@ -20,6 +20,7 @@ function EditableTodoList({ todos, removeTodo, updateTodo } ) {
           todo={ todo }
           removeTodo={ removeTodo }
           updateTodo={ updateTodo }
+          key={ todo.id }
         />)) }
       </div>
   );

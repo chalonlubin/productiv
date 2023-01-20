@@ -12,9 +12,9 @@ const DEFAULT_FORM_DATA = {title:"", description:"", priority:3};
  * { TodoApp, EditableTodo } -> TodoForm
  */
 
-function TodoForm({ initalFormData=DEFAULT_FORM_DATA, handleSave }) {
+function TodoForm({ initialFormData=DEFAULT_FORM_DATA, handleSave }) {
 
-  const [formData, setFormData] = useState(initalFormData);
+  const [formData, setFormData] = useState(initialFormData);
 
      /** Update form input. */
   function handleChange(evt) {
@@ -31,7 +31,7 @@ function TodoForm({ initalFormData=DEFAULT_FORM_DATA, handleSave }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     handleSave(formData);
-    setFormData(initalFormData);
+    setFormData(initialFormData);
   }
 
 

@@ -6,8 +6,8 @@ import TodoForm from "./TodoForm";
  *
  * Props
  * - todo
- * - update(): fn to call to update a todo
- * - remove(): fn to call to remove a todo
+ * - updateTodo(): fn to call to update a todo
+ * - removeTodo(): fn to call to remove a todo
  *
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
@@ -15,56 +15,48 @@ import TodoForm from "./TodoForm";
 function EditableTodo({ todo, updateTodo, removeTodo }) {
   const [isEditing, setIsEditing] = useState(false);
 
+  const { id } = todo;
 
-  const { id, title, description, priority } = todo;
-
-  //Can these varuables be the same as isEditing variable
-  //if so, I think it makes sense
   /** Toggle if this is being edited */
   function toggleEdit() {
-    setIsEditing(isEditing => !isEditing)
+    setIsEditing((isEditing) => !isEditing);
   }
 
-  /** Call remove fn passed to this. */
+  /** Call removeTodo fn passed to this. */
   function handleDelete() {
-    return removeTodo(id)
+    return removeTodo(id);
   }
 
-  //Object shorthand for id good here?
+  /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(formData) {
-    updateTodo( { id, ...formData})
+    updateTodo({ id, ...formData });
     setIsEditing(false);
   }
 
-  console.log(todo);
-  /** Edit form saved; toggle isEditing and update in ancestor. */
-  // function handleSave(formData) { }
-
   return (
-      <div className="EditableTodo">
-        {isEditing ? (
-           <TodoForm
-            initialFormData={ todo }
-            handleSave={ handleSave }/>
-             ) : (
-              <div className="mb-3">
-              <div className="float-end text-sm-end">
-                <button
-                    className="EditableTodo-toggle btn-link btn btn-sm"
-                    onClick={toggleEdit}>
-                  Edit
-                </button>
-                <button
-                    className="EditableTodo-delBtn btn-link btn btn-sm text-danger"
-                    onClick={handleDelete}>
-                  Del
-                </button>
-              </div>
-              <Todo id={ id } title={ title } description={ description } priority={ priority }/>
-            </div>
-            )
-        }
-      </div>
+    <div className="EditableTodo">
+      {isEditing ? (
+        <TodoForm initialFormData={todo} handleSave={handleSave} />
+      ) : (
+        <div className="mb-3">
+          <div className="float-end text-sm-end">
+            <button
+              className="EditableTodo-toggle btn-link btn btn-sm"
+              onClick={toggleEdit}
+            >
+              Edit
+            </button>
+            <button
+              className="EditableTodo-delBtn btn-link btn btn-sm text-danger"
+              onClick={handleDelete}
+            >
+              Del
+            </button>
+          </div>
+          <Todo todo={todo} />
+        </div>
+      )}
+    </div>
   );
 }
 
