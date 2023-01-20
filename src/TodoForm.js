@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { v4 as uuid } from "uuid";
 
 const DEFAULT_FORM_DATA = {title:"", description:"", priority:3};
 
@@ -13,7 +12,6 @@ const DEFAULT_FORM_DATA = {title:"", description:"", priority:3};
  */
 
 function TodoForm({ initialFormData=DEFAULT_FORM_DATA, handleSave }) {
-
   const [formData, setFormData] = useState(initialFormData);
 
      /** Update form input. */
@@ -25,15 +23,12 @@ function TodoForm({ initialFormData=DEFAULT_FORM_DATA, handleSave }) {
     }));
   }
 
-  //I think this will make a new id every time which isn't a good idea
-  //even when updating todos that already have an id.
   /** Submit form: call function from parent & clear inputs. */
   function handleSubmit(evt) {
     evt.preventDefault();
     handleSave(formData);
     setFormData(initialFormData);
   }
-
 
   return (
       <form className="NewTodoForm" onSubmit={handleSubmit}>

@@ -5,12 +5,12 @@ import EditableTodo from "./EditableTodo";
  *
  * Props:
  * - todos: array of [ todo, ... ]
- * - update(): fn to call to update a todo
- * - remove(): fn to call to remove a todo
+ * - updateTodo(): fn to call to update a todo
+ * - removeTodo(): fn to call to remove a todo
  *
  * TodoApp -> EditableTodoList -> [ EditableTodo, ... ]
  */
-//TODO: still need to add updateTodo but haven't written it yet
+
 function EditableTodoList({ todos, removeTodo, updateTodo } ) {
 
   return (
