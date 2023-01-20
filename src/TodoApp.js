@@ -24,11 +24,7 @@ function TodoApp({ initialTodos }) {
     setTodos(todos => [...todos, newTodo]);
   }
 
-<<<<<<< Updated upstream
-  /** TODO: update a todo with updatedTodo */
-=======
   /** update a todo with updatedTodo */
->>>>>>> Stashed changes
   // function update(updatedTodo) {
   //   // get old todo and update the info over the old info
   //     // could use id to find object and overwrite all data
@@ -50,11 +46,12 @@ function TodoApp({ initialTodos }) {
             <span className="text-muted">You have no todos.</span>
           </div>
 
+        {/* (if no top todo, omit this whole section) */}
           <div className="col-md-6">
-            (if no top todo, omit this whole section)
+
             <section className="mb-4">
               <h3>Top Todo</h3>
-              <TopTodo />
+              <TopTodo todos={todos} />
             </section>
 
             <section>

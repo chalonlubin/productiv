@@ -13,7 +13,6 @@ import EditableTodo from "./EditableTodo";
 
 function EditableTodoList( { todos } ) {
 
-  console.log(todos);
 
   // let editableTodos = todos.map(todo => <EditableTodo
   //   id={ todo.id }
