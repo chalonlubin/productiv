@@ -15,22 +15,22 @@ import EditableTodoList from "./EditableTodoList";
  * App -> TodoApp -> { TodoForm, EditableTodoList }
  */
 
-function TodoApp(initialTodos) {
-  const [todos, setTodos] = useState({initialTodos});
+function TodoApp({ initialTodos }) {
+  const [todos, setTodos] = useState(initialTodos);
 
   /** add a new todo to list */
   function create(todo) {
-    let newTodo = { ...todo};
+    let newTodo = { ...todo, id: uuid()};
     setTodos(todos => [...todos, newTodo]);
   }
 
-  /** update a todo with updatedTodo */
-  function update(updatedTodo) {
-    // get old todo and update the info over the old info
-      // could use id to find object and overwrite all data
-    let newData =
+  /** TODO: update a todo with updatedTodo */
+  // function update(updatedTodo) {
+  //   // get old todo and update the info over the old info
+  //     // could use id to find object and overwrite all data
+  //   let newData =
 
-  }
+  // }
 
   /** delete a todo by id */
   function remove(id) {
@@ -42,7 +42,7 @@ function TodoApp(initialTodos) {
         <div className="row">
 
           <div className="col-md-6">
-            <EditableTodoList /> OR
+            <EditableTodoList todos={ todos }/> OR
             <span className="text-muted">You have no todos.</span>
           </div>
 

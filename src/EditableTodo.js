@@ -12,8 +12,7 @@ import TodoForm from "./TodoForm";
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
-function EditableTodo() {
-
+function EditableTodo({ id, title, description, priority }) {
   /** Toggle if this is being edited */
   function toggleEdit() { }
 
@@ -26,11 +25,11 @@ function EditableTodo() {
   return (
       <div className="EditableTodo">
 
-                EITHER
+                {/* EITHER
 
                 <TodoForm />
 
-                OR
+                OR */}
 
                 <div className="mb-3">
                   <div className="float-end text-sm-end">
@@ -45,7 +44,7 @@ function EditableTodo() {
                       Del
                     </button>
                   </div>
-                  <Todo />
+                  <Todo id={ id } title={ title } description={ description } priority={ priority }/>
                 </div>
 
       </div>
