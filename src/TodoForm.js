@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 
 /** Form for adding.
@@ -10,13 +11,30 @@ import React, { useState } from "react";
  * { TodoApp, EditableTodo } -> TodoForm
  */
 
-function TodoForm() {
+function TodoForm({ id="", title="", description="", priority="" }, { createTodo },{ handleSave }) {
 
-  /** Update form input. */
-  function handleChange(evt) { }
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    priority: "",
+  });
 
-  /** Call parent function and clear form. */
-  function handleSubmit(evt) { }
+     /** Update form input. */
+  function handleChange(evt) {
+    const { name, value } = evt.target;
+    setFormData(formData => ({
+      ...formData,
+      [name]: value,
+    }));
+  }
+
+  /** Submit form: call function from parent & clear inputs. */
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    createTodo({ ...formData, id: uuid() });
+    setFormData({ title: "", description: "", priority: "" });
+  }
+
 
   return (
       <form className="NewTodoForm" onSubmit={handleSubmit}>
@@ -24,7 +42,7 @@ function TodoForm() {
         <div className="mb-3">
           <input
               id="newTodo-title"
-              name="title"
+              name={ formData.title }
               className="form-control"
               placeholder="Title"
               onChange={handleChange}

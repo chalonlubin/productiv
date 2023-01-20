@@ -11,7 +11,7 @@ import EditableTodo from "./EditableTodo";
  * TodoApp -> EditableTodoList -> [ EditableTodo, ... ]
  */
 
-function EditableTodoList( { todos } ) {
+function EditableTodoList({ todos }, { createTodo }, { removeTodo }) {
 
 
   // let editableTodos = todos.map(todo => <EditableTodo
@@ -28,7 +28,9 @@ function EditableTodoList( { todos } ) {
         id={ todo.id }
         title={ todo.title }
         description={ todo.description }
-        priority={ todo.priority }/>))}
+        priority={ todo.priority }
+        createTodo={ createTodo }
+        removeTodo={ removeTodo }/>))}
       </div>
   );
 }
