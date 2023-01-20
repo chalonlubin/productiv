@@ -12,9 +12,9 @@ import TodoForm from "./TodoForm";
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
-function EditableTodo({ id }, { title }, { description }, { priority }, { createTodo }, { removeTodo }) {
-
-  // const { id, title, description, priority } = todos;
+function EditableTodo({ todos }, { createTodo }) {
+  console.log({todos})
+  const { id, title, description, priority } = todos;
 
   /** Toggle if this is being edited */
   function toggleEdit() { }
@@ -23,16 +23,16 @@ function EditableTodo({ id }, { title }, { description }, { priority }, { create
   function handleDelete() { }
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
-  function handleSave(formData) { }
+  // function handleSave(formData) { }
 
   return (
       <div className="EditableTodo">
 
                 EITHER
-
+                {/* {
                 <TodoForm title={ title } description={ description } priority={ priority }/>
 
-                OR
+                OR */}
 
                 <div className="mb-3">
                   <div className="float-end text-sm-end">
@@ -49,7 +49,7 @@ function EditableTodo({ id }, { title }, { description }, { priority }, { create
                   </div>
                   <Todo id={ id } title={ title } description={ description } priority={ priority }/>
                 </div>
-
+                {/* } */}
       </div>
   );
 }

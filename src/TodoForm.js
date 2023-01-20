@@ -11,7 +11,7 @@ import { v4 as uuid } from "uuid";
  * { TodoApp, EditableTodo } -> TodoForm
  */
 
-function TodoForm({ id="", title="", description="", priority="" }, { createTodo },{ handleSave }) {
+function TodoForm({ id="", title="", description="", priority="" }, { createTodo }) {
 
   const [formData, setFormData] = useState({
     title: "",

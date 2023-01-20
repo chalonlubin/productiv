@@ -10,8 +10,8 @@ import EditableTodo from "./EditableTodo";
  *
  * TodoApp -> EditableTodoList -> [ EditableTodo, ... ]
  */
-
-function EditableTodoList({ todos }, { createTodo }, { removeTodo }) {
+//TODO: still need to add updateTodo but haven't written it yet
+function EditableTodoList({ todos }, { removeTodo }) {
 
 
   // let editableTodos = todos.map(todo => <EditableTodo
@@ -25,12 +25,8 @@ function EditableTodoList({ todos }, { createTodo }, { removeTodo }) {
   return (
       <div>
         {todos.map(todo => (<EditableTodo
-        id={ todo.id }
-        title={ todo.title }
-        description={ todo.description }
-        priority={ todo.priority }
-        createTodo={ createTodo }
-        removeTodo={ removeTodo }/>))}
+        todos={todos}
+        />))}
       </div>
   );
 }
