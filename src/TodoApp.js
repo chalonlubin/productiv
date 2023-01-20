@@ -24,7 +24,11 @@ function TodoApp({ initialTodos }) {
     setTodos(todos => [...todos, newTodo]);
   }
 
+<<<<<<< Updated upstream
   /** TODO: update a todo with updatedTodo */
+=======
+  /** update a todo with updatedTodo */
+>>>>>>> Stashed changes
   // function update(updatedTodo) {
   //   // get old todo and update the info over the old info
   //     // could use id to find object and overwrite all data
