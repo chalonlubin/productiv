@@ -10,13 +10,14 @@ import Todo from "./Todo";
  */
 
 function TopTodo({todos}) {
-  console.log(todos)
-  // lowest-priority # is the highest priority
-  let top = todos.reduce(
-      (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
 
+  if (todos.length > 0) {
+    let top = todos.reduce(
+      // lowest-priority # is the highest priority
+        (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
+        return <Todo  id={top.id} title={top.title} description={top.description} priority={top.priority} />;
+  }
 
-  return <Todo  id={top.id} title={top.title} description={top.description} priority={top.priority} />;
 }
 
 export default TopTodo;
