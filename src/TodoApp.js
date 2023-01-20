@@ -25,19 +25,21 @@ function TodoApp({ initialTodos }) {
     setTodos(todos => [...todos, newTodo]);
   }
 
+  //TODO: Update
   /** update a todo with updatedTodo */
-  // function update(updatedTodo) {
-  //   // get old todo and update the info over the old info
-  //     // could use id to find object and overwrite all data
-  //   let newData =
+  function updateTodo(updatedTodo) {
+    // get old todo and update the info over the old info
+      // could use id to find object and overwrite all data
 
-  // }
+
+  }
 
   //TODO: gist standard removal of item from an Array
   /** delete a todo by id */
-  function removeTodo(id) {
-    setTodos(todos => todos.filter(todo => todo.id !== id));
-  }
+    function removeTodo(id) {
+      setTodos(todos => todos.filter(todo => todo.id !== id));
+    }
+
 
   //EditableToDoList should take updateTodos and removeTodos NOT createTodo
   return (
@@ -49,7 +51,8 @@ function TodoApp({ initialTodos }) {
               {todos.length !== 0
                 ? <EditableTodoList
                   todos={ todos }
-                  removeTodo={ removeTodo } />
+                  removeTodo={ removeTodo }
+                  updateTodo={ updateTodo } />
                 : <span className="text-muted">You have no todos.</span>
               }
 
@@ -66,7 +69,7 @@ function TodoApp({ initialTodos }) {
           )}
             <section>
               <h3 className="mb-3">Add Nü</h3>
-              <TodoForm/>
+              <TodoForm handleSave={ createTodo }/>
             </section>
           </div>
 

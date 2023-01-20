@@ -12,19 +12,31 @@ import TodoForm from "./TodoForm";
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
-function EditableTodo({ todo }, { createTodo }) {
+function EditableTodo({ todo }, { updateTodo }, { removeTodo }) {
   const [isEditing, setIsEditing] = useState(false);
+
+  console.log(removeTodo)
 
 
   const { id, title, description, priority } = todo;
 
+  //Can these varuables be the same as isEditing variable
+  //if so, I think it makes sense
   /** Toggle if this is being edited */
   function toggleEdit() {
-    setIsEditing(true)
+    setIsEditing(isEditing => !isEditing)
   }
 
   /** Call remove fn passed to this. */
-  function handleDelete() { }
+  function handleDelete() {
+    return removeTodo(id)
+  }
+
+  //Object shorthand for id good here?
+  function handleSave(formData) {
+    updateTodo( { id, ...formData})
+    setIsEditing(false);
+  }
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
   // function handleSave(formData) { }
@@ -33,9 +45,8 @@ function EditableTodo({ todo }, { createTodo }) {
       <div className="EditableTodo">
         {isEditing ? (
            <TodoForm
-            title={ title }
-            description={ description }
-            priority={ priority }/>
+            initialFormData={ todo }
+            handleSave={ handleSave }/>
              ) : (
               <div className="mb-3">
               <div className="float-end text-sm-end">
