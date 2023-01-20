@@ -12,13 +12,9 @@ const DEFAULT_FORM_DATA = {title:"", description:"", priority:3};
  * { TodoApp, EditableTodo } -> TodoForm
  */
 
-function TodoForm({ initalFormData=DEFAULT_FORM_DATA }, { handleSave }) {
+function TodoForm({ initalFormData=DEFAULT_FORM_DATA, handleSave }) {
 
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    priority: "",
-  });
+  const [formData, setFormData] = useState(initalFormData);
 
      /** Update form input. */
   function handleChange(evt) {
@@ -34,8 +30,8 @@ function TodoForm({ initalFormData=DEFAULT_FORM_DATA }, { handleSave }) {
   /** Submit form: call function from parent & clear inputs. */
   function handleSubmit(evt) {
     evt.preventDefault();
-    handleSave({ ...formData, id: uuid() });
-    setFormData({ title: "", description: "", priority: "" });
+    handleSave(formData);
+    setFormData(initalFormData);
   }
 
 
@@ -45,11 +41,11 @@ function TodoForm({ initalFormData=DEFAULT_FORM_DATA }, { handleSave }) {
         <div className="mb-3">
           <input
               id="newTodo-title"
-              name={ formData.title }
+              name="title"
               className="form-control"
               placeholder="Title"
-              onChange={handleChange}
-              value="FIXME"
+              onChange={ handleChange }
+              value={ formData.title }
               aria-label="Title"
           />
         </div>
@@ -60,8 +56,8 @@ function TodoForm({ initalFormData=DEFAULT_FORM_DATA }, { handleSave }) {
               name="description"
               className="form-control"
               placeholder="Description"
-              onChange={handleChange}
-              value="FIXME"
+              onChange={ handleChange }
+              value={ formData.description }
               aria-label="Description"
           />
         </div>
@@ -73,7 +69,7 @@ function TodoForm({ initalFormData=DEFAULT_FORM_DATA }, { handleSave }) {
             </label>
             <select id="newTodo-priority"
                     name="priority"
-                    value="FIXME"
+                    value={ formData.priority }
                     onChange={handleChange}
                     className="form-control form-control-sm d-inline-flex"
             >

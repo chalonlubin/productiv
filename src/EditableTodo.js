@@ -12,10 +12,8 @@ import TodoForm from "./TodoForm";
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
-function EditableTodo({ todo }, { updateTodo }, { removeTodo }) {
+function EditableTodo({ todo, updateTodo, removeTodo }) {
   const [isEditing, setIsEditing] = useState(false);
-
-  console.log(removeTodo)
 
 
   const { id, title, description, priority } = todo;
@@ -38,6 +36,7 @@ function EditableTodo({ todo }, { updateTodo }, { removeTodo }) {
     setIsEditing(false);
   }
 
+  console.log(todo);
   /** Edit form saved; toggle isEditing and update in ancestor. */
   // function handleSave(formData) { }
 

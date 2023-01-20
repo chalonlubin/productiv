@@ -9,15 +9,24 @@ import Todo from "./Todo";
  * TodoApp -> TopTodo
  */
 
+
+
+// Fix was returning null vs undefined.
 function TopTodo({todos}) {
+  if (todos.length === 0) return null;
 
-  if (todos.length > 0) {
-    let top = todos.reduce(
-      // lowest-priority # is the highest priority
-        (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
-        return <Todo  id={top.id} title={top.title} description={top.description} priority={top.priority} />;
-  }
+  let top = todos.reduce(
+    (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
 
+    return <Todo todo={top} />;
+
+  // if (todos.length > 0) {
+  //   let top = todos.reduce(
+  //     // lowest-priority # is the highest priority
+  //       (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
+  //       return <Todo  id={top.id} title={top.title} description={top.description} priority={top.priority} />;
+  // }
 }
+
 
 export default TopTodo;

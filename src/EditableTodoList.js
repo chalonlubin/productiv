@@ -11,7 +11,7 @@ import EditableTodo from "./EditableTodo";
  * TodoApp -> EditableTodoList -> [ EditableTodo, ... ]
  */
 //TODO: still need to add updateTodo but haven't written it yet
-function EditableTodoList({ todos }, { removeTodo }, { updateTodo } ) {
+function EditableTodoList({ todos, removeTodo, updateTodo } ) {
 
   return (
       <div>
