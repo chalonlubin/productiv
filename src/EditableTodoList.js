@@ -25,7 +25,7 @@ function EditableTodoList({ todos }, { removeTodo }) {
   return (
       <div>
         {todos.map(todo => (<EditableTodo
-        todos={todos}
+        todo={todo}
         />))}
       </div>
   );
